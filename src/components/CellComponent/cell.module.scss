@@ -1,0 +1,11 @@
+.cell {
+	width: 64px;
+	height: 64px;
+
+	&.white {
+		background: var(--color-white);
+	}
+		&.black {
+			background: var(--color-black);
+		}
+}
