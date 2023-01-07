@@ -1,22 +1,20 @@
 import React from 'react';
-
 //Components
 import Board from '../../modules/Board';
 import CellComponent from 'components/CellComponent/index';
-
+//Variables
+import {fieldSize} from 'options'
 //Styles
 import styles from './board.module.scss';
 import classnames from 'classnames/bind';
 const cn = classnames.bind(styles);
 
-const newBoard = new Board(8, 8)
-const arr = newBoard.initCells()
-console.log(arr);
+const newBoard = new Board(fieldSize).initCells()
 
 function BoardComponent() {
   return (
     <div className={cn('board')}>
-			{arr.map(row => row.map((cell: any) => <CellComponent data={cell} />))}
+			{newBoard.map(row => row.map((cell: any, index: number) => <CellComponent key={index} data={cell} />))}
 		</div>
   );
 }

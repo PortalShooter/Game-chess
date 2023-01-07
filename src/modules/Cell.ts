@@ -1,12 +1,12 @@
 export class Cell {
-	readonly _width: number;
-	readonly _height: number;
+	readonly _x: number;
+	readonly _y: number;
 	readonly _color: string;
 	_available: boolean;
 
-	constructor(width: number, height: number, color: string, available: boolean) {
-		this._width = width;
-		this._height = height;
+	constructor(x: number, y: number, color: string, available: boolean) {
+		this._x = x;
+		this._y = y;
 		this._color = color;
 		this._available = available;
 	}

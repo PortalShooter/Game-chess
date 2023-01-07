@@ -1,24 +1,21 @@
 import { Cell } from "./Cell";
 
 export default class Board {
-	readonly _numberRows: number;
-	readonly _numberColumns: number;
+	readonly _fieldSize: number;
 	cells: [any]
 
-
-	constructor(numberRows: number, numberColumns: number, ) {
-		this._numberRows = numberRows
-		this._numberColumns = numberColumns
+	constructor(fieldSize: number ) {
+		this._fieldSize = fieldSize
 		this.cells = [[]]
 	}
 
 	initCells() {
-		for(let i = 1; i <= this._numberRows; i++) {
+		for(let i = 1; i <= this._fieldSize; i++) {
 			const row = []
-			for(let u = 1; u <= this._numberColumns; u++) {
+			for(let u = 1; u <= this._fieldSize; u++) {
 				const color = (i + u) % 2 ? 'black' : 'white'
-
-				row.push(new Cell(64, 64, color, true))
+		
+				row.push(new Cell(i, u, color, true))
 			}
 			this.cells.push(row)
 		}

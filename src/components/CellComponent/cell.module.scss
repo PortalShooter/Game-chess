@@ -1,6 +1,6 @@
 .cell {
-	width: 64px;
-	height: 64px;
+	width: calc(100% / var(--field-size));
+	height: calc(100% / var(--field-size));
 
 	&.white {
 		background: var(--color-white);
