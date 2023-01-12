@@ -9,12 +9,13 @@ import styles from './board.module.scss';
 import classnames from 'classnames/bind';
 const cn = classnames.bind(styles);
 
-const newBoard = new Board(fieldSize).initCells()
+const newBoard = new Board(fieldSize)
+const arrCells = newBoard.initCells()
 
 function BoardComponent() {
   return (
     <div className={cn('board')}>
-			{newBoard.map(row => row.map((cell: any, index: number) => <CellComponent key={index} data={cell} />))}
+			{arrCells.map(row => row.map((cell: any, index: number) => <CellComponent key={index} data={cell} />))}
 		</div>
   );
 }

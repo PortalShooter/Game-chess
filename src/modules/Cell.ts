@@ -1,15 +1,18 @@
-export class Cell {
-	readonly _x: number;
-	readonly _y: number;
-	readonly _color: string;
-	_available: boolean;
-
-	constructor(x: number, y: number, color: string, available: boolean) {
-		this._x = x;
-		this._y = y;
-		this._color = color;
-		this._available = available;
+import Figure from 'modules/figures/Figure';
+class Cell {
+	public available: boolean
+	constructor(
+		readonly x: number,
+		readonly y: number,
+		readonly color: string,
+		public figure: Figure | null
+	) {
+		this.x = x;
+		this.y = y;
+		this.color = color;
+		this.available = true;
+		this.figure = figure
 	}
-
-
 }
+
+export default Cell
