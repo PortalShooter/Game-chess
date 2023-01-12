@@ -1,4 +1,5 @@
 import React from 'react';
+import Cell from 'modules/Cell';
 //Components
 import Board from '../../modules/Board';
 import CellComponent from 'components/CellComponent/index';
@@ -11,11 +12,12 @@ const cn = classnames.bind(styles);
 
 const newBoard = new Board(fieldSize)
 const arrCells = newBoard.initCells()
+newBoard.setFigures()
 
 function BoardComponent() {
   return (
     <div className={cn('board')}>
-			{arrCells.map(row => row.map((cell: any, index: number) => <CellComponent key={index} data={cell} />))}
+			{arrCells.map(row => row.map((cell: Cell, index: number) => <CellComponent key={index} data={cell} />))}
 		</div>
   );
 }
