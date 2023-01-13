@@ -5,7 +5,10 @@
 	&.white {
 		background: var(--color-white);
 	}
-		&.black {
-			background: var(--color-black);
-		}
+	&.black {
+		background: var(--color-black);
+	}
+	&.is-figure:hover {
+		cursor: pointer;
+	}
 }

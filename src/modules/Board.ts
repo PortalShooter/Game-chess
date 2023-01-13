@@ -7,18 +7,16 @@ import Bishop from './figures/Bishop';
 import Knight from './figures/Knight';
 import Rook from './figures/Rook';
 export default class Board {
-	private readonly _fieldSize: number;
 	cells: Cell[][]
 
-	constructor(fieldSize: number ) {
-		this._fieldSize = fieldSize
+	constructor() {
 		this.cells = []
 	}
 
 	initCells() {
-		for(let i = 1; i <= this._fieldSize; i++) {
+		for(let i = 1; i <= 8; i++) {
 			const row = []
-			for(let u = 1; u <= this._fieldSize; u++) {
+			for(let u = 1; u <= 8; u++) {
 				const color = (i + u) % 2 ? Colors.BLACK : Colors.WHITE
 				row.push(new Cell(i, u, color, null))
 			}
