@@ -16,7 +16,6 @@ class Game {
 		newBoard.setFigures()
 		return arrCells
 	}
-
 }
 
 export default Game
