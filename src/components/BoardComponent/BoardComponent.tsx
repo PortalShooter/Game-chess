@@ -3,14 +3,13 @@ import Cell from 'modules/Cell';
 //Components
 import Board from '../../modules/Board';
 import CellComponent from 'components/CellComponent/index';
-//Variables
-import {fieldSize} from 'options'
 //Styles
 import styles from './board.module.scss';
 import classnames from 'classnames/bind';
 const cn = classnames.bind(styles);
 
-const newBoard = new Board(fieldSize)
+
+const newBoard = new Board()
 const arrCells = newBoard.initCells()
 newBoard.setFigures()
 
