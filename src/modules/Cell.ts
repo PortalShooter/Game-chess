@@ -13,6 +13,10 @@ class Cell {
 		this.available = true;
 		this.figure = figure
 	}
+
+	
+
+
 }
 
 export default Cell

@@ -14,7 +14,11 @@ function CellComponent({ data }: Props) {
 	const { color, figure } = data
 	
 	return (
-		<div className={cn('cell', color)}>
+		<div onClick={() => {
+			// if(figure) {
+			// 	figure.isActive = true;
+			// }
+		}} className={cn('cell', color, figure && 'is-figure')}>
 			{figure && <FigureComponent figure={figure}/>}
 		</div>
 	)

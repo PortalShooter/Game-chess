@@ -24,7 +24,7 @@ code {
 	min-height: inherit;
 }
 
-.app {
+.game {
 	display: flex;
 	justify-content: center;
 	align-items: center;
