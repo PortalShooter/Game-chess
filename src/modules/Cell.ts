@@ -10,8 +10,13 @@ class Cell {
 		this.x = x;
 		this.y = y;
 		this.color = color;
-		this.available = true;
+		this.available = false;
 		this.figure = figure
+	}
+
+	setFigure(figure: Figure) {
+		this.figure = figure
+		this.figure.cell = this;
 	}
 }
 

@@ -3,12 +3,13 @@ import Figure from "./Figure";
 import Cell from "modules/Cell";
 import spriteWhite from 'assets/chessmen/white/rook.png'
 import spriteBlack from 'assets/chessmen/black/rook.png'
+import Player from "modules/Player";
 
 class Rook extends Figure {
-	sprite = this.color === Colors.WHITE ? spriteWhite : spriteBlack;
-
-	constructor(color: Colors, cell: Cell) {
-		super(color, cell)
+	
+	constructor(color: Colors, cell: Cell, player: Player) {
+		super(color, cell, player)
+		this.sprite = this.color === Colors.WHITE ? spriteWhite : spriteBlack;
 	}
 }
 

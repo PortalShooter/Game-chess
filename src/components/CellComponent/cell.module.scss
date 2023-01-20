@@ -1,6 +1,9 @@
 .cell {
 	width: calc(100% / var(--field-size));
 	height: calc(100% / var(--field-size));
+	display: flex;
+	justify-content: center;
+	align-items: center;
 
 	&.white {
 		background: var(--color-white);
@@ -10,5 +13,17 @@
 	}
 	&.is-figure:hover {
 		cursor: pointer;
+	}
+	&.selected {
+		background: red;
+	}
+	&__abailable {
+		width: 30%;
+		height: 30%;
+		border-radius: 50%;
+		background: green;
+	}
+	&.can-attack {
+		background: green;
 	}
 }

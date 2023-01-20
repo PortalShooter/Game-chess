@@ -5,11 +5,11 @@ import styles from './figure.module.scss';
 import classnames from 'classnames/bind';
 const cn = classnames.bind(styles);
 
-const FigureComponent:React.FC<{figure: Figure}> = (figure) => {
-	const sprite = figure.figure.getSptire()
+const FigureComponent:React.FC<{figure: Figure}> = ({figure}) => {
+	const sprite = figure.getSptire()
 	
   return (
-    <div className={cn('figure')}>
+    <div className={cn('figure')} onClick={() => figure.player.setActiveFigure(figure)}>
 			{sprite ? <img className={cn('figure__img')} src={sprite} alt="" /> : null}
 		</div>
   );

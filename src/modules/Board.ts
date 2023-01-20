@@ -1,5 +1,7 @@
 import { Colors } from './Colors';
 import Cell from "./Cell";
+import Player from './Player';
+// Figure models
 import Pawn from "./figures/Pawn";
 import King from './figures/King';
 import Queen from './figures/Queen';
@@ -8,9 +10,13 @@ import Knight from './figures/Knight';
 import Rook from './figures/Rook';
 export default class Board {
 	cells: Cell[][]
+	player1: Player
+	player2: Player
 
 	constructor() {
 		this.cells = []
+		this.player1 = new Player(Colors.WHITE)
+		this.player2 = new Player(Colors.BLACK)
 	}
 
 	initCells() {
@@ -25,6 +31,24 @@ export default class Board {
 		return this.cells
 	}
 
+	public getCopyBoard() {
+		const newBoard = new Board();
+    newBoard.cells = this.cells;
+    return newBoard;
+	}
+
+	public setCells(cells:Cell[][]) {
+		this.cells = cells
+	}
+
+	public getCell(x: number, y: number):Cell {
+		return this.cells[y][x]
+	}
+
+	getPlayer() {
+		return this.player1
+	}
+
 	setFigures() {
 		this.setPawns()
 		this.setKings()
@@ -34,36 +58,36 @@ export default class Board {
 		this.setRooks()
 	}
 
-	setPawns() {
+	private setPawns() {
 		for(let i = 0; i < 8; i++) {
-			new Pawn(Colors.BLACK, this.cells[1][i])
-			new Pawn(Colors.WHITE, this.cells[6][i])
+			new Pawn(Colors.BLACK, this.getCell(i, 1), this.player2)
+			new Pawn(Colors.WHITE, this.getCell(i, 6), this.player1)
 		}
 	}
-	setKings() {
-		new King(Colors.BLACK, this.cells[0][4])
-		new King(Colors.WHITE, this.cells[7][4])
+	private setKings() {
+		new King(Colors.BLACK, this.getCell(4, 0), this.player2)
+		new King(Colors.WHITE, this.getCell(4, 7), this.player1)
 	}
-	setQueens() {
-		new Queen(Colors.BLACK, this.cells[0][3])
-		new Queen(Colors.WHITE, this.cells[7][3])
+	private setQueens() {
+		new Queen(Colors.BLACK, this.getCell(3, 0), this.player1)
+		new Queen(Colors.WHITE, this.getCell(3, 7), this.player1)
 	}
-	setBishop() {
-		new Bishop(Colors.BLACK, this.cells[0][2])
-		new Bishop(Colors.BLACK, this.cells[0][5])
-		new Bishop(Colors.WHITE, this.cells[7][2])
-		new Bishop(Colors.WHITE, this.cells[7][5])
+	private setBishop() {
+		new Bishop(Colors.BLACK, this.getCell(2, 0), this.player1)
+		new Bishop(Colors.BLACK, this.getCell(5, 0), this.player1)
+		new Bishop(Colors.WHITE, this.getCell(2, 7), this.player1)
+		new Bishop(Colors.WHITE, this.getCell(5, 7), this.player1)
 	}
-	setKnights() {
-		new Knight(Colors.BLACK, this.cells[0][1])
-		new Knight(Colors.BLACK, this.cells[0][6])
-		new Knight(Colors.WHITE, this.cells[7][1])
-		new Knight(Colors.WHITE, this.cells[7][6])
+	private setKnights() {
+		new Knight(Colors.BLACK, this.getCell(1, 0), this.player1)
+		new Knight(Colors.BLACK, this.getCell(6, 0), this.player1)
+		new Knight(Colors.WHITE, this.getCell(1, 7), this.player1)
+		new Knight(Colors.WHITE, this.getCell(6, 7), this.player1)
 	}
-	setRooks() {
-		new Rook(Colors.BLACK, this.cells[0][0])
-		new Rook(Colors.BLACK, this.cells[0][7])
-		new Rook(Colors.WHITE, this.cells[7][0])
-		new Rook(Colors.WHITE, this.cells[7][7])
+	private setRooks() {
+		new Rook(Colors.BLACK, this.getCell(0, 0), this.player1)
+		new Rook(Colors.BLACK, this.getCell(7, 0), this.player1)
+		new Rook(Colors.WHITE, this.getCell(0, 7), this.player1)
+		new Rook(Colors.WHITE, this.getCell(7, 7), this.player1)
 	}
 }
