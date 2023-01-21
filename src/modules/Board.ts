@@ -37,6 +37,14 @@ export default class Board {
     return newBoard;
 	}
 
+	public clearCells() {
+		this.cells.forEach(row => {
+			row.forEach(cell => {
+				cell.available = false
+			})
+		})
+	}
+
 	public setCells(cells:Cell[][]) {
 		this.cells = cells
 	}

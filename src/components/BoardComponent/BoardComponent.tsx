@@ -17,7 +17,13 @@ function BoardComponent({board, setBoard}: Props) {
 	const [selectedCell, setSelectedCell] = useState<Cell | null>(null)
 
 	useEffect(() => {
+		highlightCells()
 		updateBoard()
+
+		if(!selectedCell) {
+			board.clearCells()
+		}
+
 	}, [selectedCell])
 
 
@@ -28,7 +34,7 @@ function BoardComponent({board, setBoard}: Props) {
 			setSelectedCell(cell)
 		}
 
-		// highlightCells()
+		
 
 		if(selectedCell && selectedCell !== cell) {
 			selectedCell.figure?.moveFigure(cell)
@@ -37,7 +43,7 @@ function BoardComponent({board, setBoard}: Props) {
 	}
 
 	//Проверяем каждую клетку, можно ли на нее походить
-	function highlightCells() {
+	function highlightCells() { // Где отключать подсветку??
 		if(selectedCell?.figure) {
 			const figure = selectedCell.figure
 			board.cells.forEach(row => {

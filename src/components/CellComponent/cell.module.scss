@@ -14,9 +14,6 @@
 	&.is-figure:hover {
 		cursor: pointer;
 	}
-	&.selected {
-		background: red;
-	}
 	&__abailable {
 		width: 30%;
 		height: 30%;
@@ -25,5 +22,8 @@
 	}
 	&.can-attack {
 		background: green;
+	}
+	&.selected {
+		background: red;
 	}
 }

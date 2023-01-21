@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react'
 import FigureComponent from 'components/FigureComponent'
 import Cell from 'modules/Cell'
 import Board from 'modules/Board'
-import Figure from 'modules/figures/Figure'
 // Styles
 import styles from './cell.module.scss'
 import classnames from 'classnames/bind'
