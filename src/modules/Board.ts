@@ -20,11 +20,11 @@ export default class Board {
 	}
 
 	initCells() {
-		for(let i = 1; i <= 8; i++) {
+		for(let x = 0; x < 8; x++) {
 			const row = []
-			for(let u = 1; u <= 8; u++) {
-				const color = (i + u) % 2 ? Colors.BLACK : Colors.WHITE
-				row.push(new Cell(i, u, color, null))
+			for(let y = 0; y < 8; y++) {
+				const color = (x + y) % 2 ? Colors.BLACK : Colors.WHITE
+				row.push(new Cell(y, x, this, color, null))
 			}
 			this.cells.push(row)
 		}

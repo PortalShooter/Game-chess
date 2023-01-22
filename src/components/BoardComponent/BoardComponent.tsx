@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Cell from 'modules/Cell';
 import Board from 'modules/Board';
+import svg from 'assets/coordinates.svg'
 //Components
 import CellComponent from 'components/CellComponent/index';
 //Styles
@@ -18,12 +19,6 @@ function BoardComponent({board, setBoard}: Props) {
 
 	useEffect(() => {
 		highlightCells()
-		updateBoard()
-
-		if(!selectedCell) {
-			board.clearCells()
-		}
-
 	}, [selectedCell])
 
 
@@ -34,24 +29,32 @@ function BoardComponent({board, setBoard}: Props) {
 			setSelectedCell(cell)
 		}
 
-		
-
-		if(selectedCell && selectedCell !== cell) {
+		if(selectedCell && selectedCell !== cell && cell.available) {
 			selectedCell.figure?.moveFigure(cell)
 			setSelectedCell(null)
 		}
+
+		//Где то здесь должна быть проверка на возможность хода
+		/**
+		 * Хотя вообще на все доступные клетки мы можем ходить,
+		 * а значит и проверка глобальная не нужна.
+		 */
 	}
 
 	//Проверяем каждую клетку, можно ли на нее походить
-	function highlightCells() { // Где отключать подсветку??
+	function highlightCells() {
 		if(selectedCell?.figure) {
 			const figure = selectedCell.figure
 			board.cells.forEach(row => {
-			row.forEach(cell => {
-				cell.available = figure.canMove(cell)
+				row.forEach(cell => {
+					cell.available = figure.canMove(cell)
+				})
 			})
-		})
 		}
+		if(!selectedCell) {
+			board.clearCells()
+		}
+		updateBoard()
 	}
 
 	function updateBoard() {
@@ -59,21 +62,24 @@ function BoardComponent({board, setBoard}: Props) {
 		setBoard(newBoard)
 	}
 
-
   return (
-    <div className={cn('board')}>
-			{board.cells.map(row =>
-				row.map((cell: Cell, index: number) =>
-					<CellComponent 
-						key={index} 
-						cell={cell} 
-						selected={selectedCell === cell} 
-						board={board}
-						click={click} 
-					/>
-				)
-			)}
+		<div className={cn('board__outside')}>
+
+			<div className={cn('board')}>
+				{board.cells.map(row =>
+					row.map((cell: Cell, index: number) =>
+						<CellComponent 
+							key={index} 
+							cell={cell} 
+							selected={selectedCell === cell} 
+							board={board}
+							click={click} 
+						/>
+					)
+				)}
+			</div>
 		</div>
+    
   );
 }
 

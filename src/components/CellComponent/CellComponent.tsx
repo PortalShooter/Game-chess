@@ -28,6 +28,7 @@ function CellComponent({ cell, board, selected, click }: CellProps) {
 				)} 
 			onClick={() => {click(cell)}}
 		>
+			{/* <div style={{color: 'blue'}} >x:{cell.x},y{cell.y}</div> */}
 			{cell.available && !cell.figure && <div className={cn('cell__abailable')} /> }
 			{figure && <FigureComponent figure={figure}/>}
 		</div>
