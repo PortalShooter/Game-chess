@@ -1,9 +1,4 @@
 .cell {
-	width: calc(100% / var(--field-size));
-	height: calc(100% / var(--field-size));
-	display: flex;
-	justify-content: center;
-	align-items: center;
 
 	&.white {
 		background: var(--color-white);

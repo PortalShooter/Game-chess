@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Cell from 'modules/Cell';
 import Board from 'modules/Board';
-import svg from 'assets/coordinates.svg'
+import 'helper/minViewPort';
 //Components
 import CellComponent from 'components/CellComponent/index';
 //Styles
@@ -21,7 +21,6 @@ function BoardComponent({board, setBoard}: Props) {
 		highlightCells()
 	}, [selectedCell])
 
-
 	function click(cell: Cell) {
 		if(selectedCell === cell) {
 			setSelectedCell(null)
@@ -33,12 +32,6 @@ function BoardComponent({board, setBoard}: Props) {
 			selectedCell.figure?.moveFigure(cell)
 			setSelectedCell(null)
 		}
-
-		//Где то здесь должна быть проверка на возможность хода
-		/**
-		 * Хотя вообще на все доступные клетки мы можем ходить,
-		 * а значит и проверка глобальная не нужна.
-		 */
 	}
 
 	//Проверяем каждую клетку, можно ли на нее походить
