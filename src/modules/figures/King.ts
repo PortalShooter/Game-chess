@@ -1,4 +1,3 @@
-import Player from 'modules/Player';
 import { Colors } from "modules/Colors";
 import Figure, { FigureNames } from "./Figure";
 import Cell from "modules/Cell";

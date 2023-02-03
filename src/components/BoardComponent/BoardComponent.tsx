@@ -7,14 +7,17 @@ import CellComponent from 'components/CellComponent/index';
 //Styles
 import styles from './board.module.scss';
 import classnames from 'classnames/bind';
+import Player from 'modules/Player';
 const cn = classnames.bind(styles);
 
 interface Props {
 	board: Board,
 	setBoard: (board: Board) => void
+	activePlayer: Player,
+	swapActivePlayer: () => void
 }
 
-function BoardComponent({board, setBoard}: Props) {
+function BoardComponent({board, setBoard, activePlayer, swapActivePlayer}: Props) {
 	const [selectedCell, setSelectedCell] = useState<Cell | null>(null)
 
 	useEffect(() => {
@@ -24,13 +27,14 @@ function BoardComponent({board, setBoard}: Props) {
 	function click(cell: Cell) {
 		if(selectedCell === cell) {
 			setSelectedCell(null)
-		} else if(cell.figure) {
+		} else if(cell.figure && cell.figure.color === activePlayer.color) {
 			setSelectedCell(cell)
 		}
 
 		if(selectedCell && selectedCell !== cell && cell.available) {
 			selectedCell.figure?.moveFigure(cell)
 			setSelectedCell(null)
+			swapActivePlayer()
 		}
 	}
 
@@ -57,7 +61,6 @@ function BoardComponent({board, setBoard}: Props) {
 
   return (
 		<div className={cn('board__outside')}>
-
 			<div className={cn('board')}>
 				{board.cells.map(row =>
 					row.map((cell: Cell, index: number) =>
@@ -65,7 +68,6 @@ function BoardComponent({board, setBoard}: Props) {
 							key={index} 
 							cell={cell} 
 							selected={selectedCell === cell} 
-							board={board}
 							click={click} 
 						/>
 					)

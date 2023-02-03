@@ -3,7 +3,6 @@ import Figure, { FigureNames } from "./Figure";
 import Cell from "modules/Cell";
 import spriteWhite from 'assets/chessmen/white/rook.png'
 import spriteBlack from 'assets/chessmen/black/rook.png'
-import Player from "modules/Player";
 
 class Rook extends Figure {
 	

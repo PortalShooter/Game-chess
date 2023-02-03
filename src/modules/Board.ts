@@ -1,6 +1,5 @@
 import { Colors } from './Colors';
 import Cell from "./Cell";
-import Player from './Player';
 // Figure models
 import Pawn from "./figures/Pawn";
 import King from './figures/King';
@@ -10,13 +9,9 @@ import Knight from './figures/Knight';
 import Rook from './figures/Rook';
 export default class Board {
 	cells: Cell[][]
-	player1: Player
-	player2: Player
 
 	constructor() {
 		this.cells = []
-		this.player1 = new Player(Colors.WHITE)
-		this.player2 = new Player(Colors.BLACK)
 	}
 
 	initCells() {
@@ -51,10 +46,6 @@ export default class Board {
 
 	public getCell(x: number, y: number):Cell {
 		return this.cells[y][x]
-	}
-
-	getPlayer() {
-		return this.player1
 	}
 
 	setFigures() {
