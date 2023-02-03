@@ -17,9 +17,8 @@ class King extends Figure {
 		if(!super.canMove(target)) {
 			return false
 		}
-
-		const absX = Math.abs(this.cell.x - target.x);
-		const absY = Math.abs(this.cell.y - target.y);
+		
+		const {absX, absY} = this.cell.getCoordinateDifferenceAll(target)
 
 		return  absX + absY <= 2 && (absX === 1 || absY === 1)
 	}

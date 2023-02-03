@@ -33,6 +33,19 @@ class Cell {
     return false;
   }
 
+	getCoordinateDifferenceX (target: Cell): number {
+		return Math.abs(this.x - target.x);
+	}
+	getCoordinateDifferenceY (target: Cell): number {
+		return Math.abs(this.y - target.y);
+	}
+	getCoordinateDifferenceAll(target: Cell) {
+		return {
+			absX: this.getCoordinateDifferenceX(target),
+			absY: this.getCoordinateDifferenceY (target)
+		}
+	}
+
 	isEmptyVertical(target: Cell): boolean {
     if (this.x !== target.x) return false
 
@@ -62,8 +75,7 @@ class Cell {
 	}
 
 	isEmptyDiagonal(target: Cell): boolean {
-		const absX = Math.abs(target.x - this.x);
-		const absY = Math.abs(target.y - this.y);
+		const {absX, absY} = this.getCoordinateDifferenceAll(target)
 		if(absY !== absX) return false
 
 		const minX = Math.min(target.x, this.x)
