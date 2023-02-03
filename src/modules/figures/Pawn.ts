@@ -8,8 +8,8 @@ import Player from 'modules/Player';
 export default class Pawn extends Figure {
 	firstMove: boolean
 	
-	constructor(color: Colors, cell: Cell, player: Player) {
-		super(color, cell, player)
+	constructor(color: Colors, cell: Cell) {
+		super(color, cell)
 		this.firstMove = true
 		this.sprite = this.color === Colors.WHITE ? spriteWhite : spriteBlack;
 		this.name = FigureNames.PAWN

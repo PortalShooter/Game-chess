@@ -7,8 +7,8 @@ import spriteBlack from 'assets/chessmen/black/knight.png'
 
 class Knight extends Figure {
 	
-	constructor(color: Colors, cell: Cell, player: Player) {
-		super(color, cell, player)
+	constructor(color: Colors, cell: Cell) {
+		super(color, cell)
 		this.sprite = this.color === Colors.WHITE ? spriteWhite : spriteBlack;
 		this.name = FigureNames.KNIGHT
 	}

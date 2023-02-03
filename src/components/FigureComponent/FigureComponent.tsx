@@ -9,7 +9,7 @@ const FigureComponent:React.FC<{figure: Figure}> = ({figure}) => {
 	const sprite = figure.getSptire()
 	
   return (
-    <div className={cn('figure')} onClick={() => figure.player.setActiveFigure(figure)}>
+    <div className={cn('figure')}>
 			{sprite ? <img className={cn('figure__img')} src={sprite} alt="" /> : null}
 		</div>
   );

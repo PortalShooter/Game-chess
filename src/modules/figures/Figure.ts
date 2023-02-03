@@ -1,6 +1,5 @@
 import Cell from 'modules/Cell';
 import { Colors } from '../Colors';
-import Player from 'modules/Player';
 
 export enum FigureNames {
   FIGURE = "Фигура",
@@ -19,7 +18,6 @@ abstract class Figure {
 	constructor(
 		readonly color: Colors,
 		public cell: Cell,
-		readonly player: Player
 	) {
 		this.color = color
 		this.sprite = null
