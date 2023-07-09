@@ -36,7 +36,7 @@ abstract class Figure {
 			return false
 		}
 
-		// Временно
+		// Временно. Без этого короля можно атаковать
 		if(target.figure?.name === FigureNames.KING) {
 			return false
 		}
@@ -45,9 +45,20 @@ abstract class Figure {
 	}
 
 	moveFigure(target: Cell) {
-		target.figure = this
-		this.cell.figure = null
-		this.cell = target
+		target.figure = this;
+		this.cell.figure = null;
+		this.cell = target;
+
+		/* 
+			Проверяем на шах
+			1. Берем координаты короля соперника
+			2. Запускаем canMove походившей фигуре
+			3. Сравниваем есть ли параметр true на ячейки короля
+		*/
+
+		// 1. Для этого есть смысл всегда знать местоположение короля
+
+		
 	}
 
 }

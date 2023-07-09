@@ -7,11 +7,14 @@ import Queen from './figures/Queen';
 import Bishop from './figures/Bishop';
 import Knight from './figures/Knight';
 import Rook from './figures/Rook';
+import Game from './Game';
 export default class Board {
-	cells: Cell[][]
+	cells: Cell[][];
+	game: Game;
 
-	constructor() {
-		this.cells = []
+	constructor({game}: {game: Game}) {
+		this.cells = [];
+		this.game = game;
 	}
 
 	initCells() {
@@ -21,13 +24,13 @@ export default class Board {
 				const color = (x + y) % 2 ? Colors.BLACK : Colors.WHITE
 				row.push(new Cell(y, x, this, color, null))
 			}
-			this.cells.push(row)
+			this.cells.push(row);
 		}
 		return this.cells
 	}
 
 	public getCopyBoard() {
-		const newBoard = new Board();
+		const newBoard = new Board({game: this.game});
     newBoard.cells = this.cells;
     return newBoard;
 	}

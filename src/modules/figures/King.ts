@@ -21,6 +21,14 @@ class King extends Figure {
 
 		return  absX + absY <= 2 && (absX === 1 || absY === 1)
 	}
+
+	moveFigure(target: Cell): void {
+		super.moveFigure(target);
+
+		this.color === Colors.WHITE 
+		? this.cell.board.game.setWhiteKingPosition({x: target.x, y: target.y}) 
+		: this.cell.board.game.setBlackKingPosition({x: target.x, y: target.y})
+	}
 }
 
 export default King
